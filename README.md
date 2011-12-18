@@ -7,8 +7,10 @@ A module for calculating the duration between two given dates, irrespective of t
 If you have npm installed
 
 ```sh
-npm install duration-calculator
+$ npm install duration-calculator
 ```
+
+Inside a js file:
 
 ```js
 var durationCalculator = require('duration-calculator');
