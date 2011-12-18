@@ -4,6 +4,12 @@ A module for calculating the duration between two given dates, irrespective of t
 
 ## Usage
 
+If you have npm installed
+
+```sh
+npm install duration-calculator
+```
+
 ```js
 var durationCalculator = require('duration-calculator');
 
