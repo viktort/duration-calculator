@@ -1,5 +1,7 @@
 # duration-calculator
 
+[![Build Status](https://secure.travis-ci.org/viktort/duration-calculator.png)](http://travis-ci.org/viktort/duration-calculator)
+
 A module for calculating the duration between two given dates, irrespective of the order.
 
 ## Usage
