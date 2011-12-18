@@ -12,5 +12,7 @@ module.exports.calculate = function(dateOne, dateTwo) {
     ? (dateOne - dateTwo) / milisInOneDay
     : (dateTwo - dateOne) /milisInOneDay;
 
+  if(duration < 0 ) return duration * -1;
+  
   return duration;
 };
