@@ -54,7 +54,7 @@ test('calculator', {
   },
 
   'Check datetimes crossing a DST boundary the other way are supported': function() {
-    // 25th march 2012 -> 1hr
+    // 26th october 2012 <- 1hr
     assert.equal(calculator.calculate('2012-10-27 13:00', '2012-10-29 12:00'), 2);
   },
 
