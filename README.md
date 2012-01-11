@@ -1,6 +1,13 @@
 # duration-calculator
 
+## viktort
+
 [![Build Status](https://secure.travis-ci.org/viktort/duration-calculator.png)](http://travis-ci.org/viktort/duration-calculator)
+
+## shackpank (fork)
+
+[![Build Status](https://secure.travis-ci.org/shackpank/duration-calculator.png)](http://travis-ci.org/shackpank/duration-calculator)
+
 
 A module for calculating the duration between two given dates, irrespective of the order.
 
