@@ -1,18 +1,34 @@
 require('datejs');
 var milisInOneDay = 86400000;
 
-module.exports.calculate = function(dateOne, dateTwo) {
-  if (!dateOne || !dateTwo) return new Error('InvalidParams: Missing a date parameter');
+var _error = function() {
+  return new Error('InvalidParams: Missing a date parameter');
+}
 
-  var dateOne = new Date.parse(dateOne);
-  var dateTwo = new Date.parse(dateTwo);
-  var duration = 0;
+var _calculate = function(dateOne, dateTwo) {
+  if(!dateOne || !dateTwo) return false;
 
-  duration = (this.dateOne > this.dateTwo)
+  dateOne = new Date.parse(dateOne);
+  dateTwo = new Date.parse(dateTwo);
+
+  var duration = (this.dateOne > this.dateTwo)
     ? (dateOne - dateTwo) / milisInOneDay
-    : (dateTwo - dateOne) /milisInOneDay;
+    : (dateTwo - dateOne) / milisInOneDay;
 
-  if(duration < 0 ) return duration * -1;
-  
-  return duration;
+  return Math.abs(duration);
+};
+
+module.exports.calculate = function(dateOne, dateTwo) {
+  var d;
+  return (d = _calculate(dateOne, dateTwo)) ? d : _error();
+};
+
+module.exports.calculateWholeDays = function(dateOne, dateTwo) {
+  var d;
+  return (d = _calculate(dateOne, dateTwo)) ? Math.floor(d) : _error();
+}
+
+module.exports.calculatePartialDays = function(dateOne, dateTwo) {
+  var d;
+  return (d = _calculate(dateOne, dateTwo)) ? Math.ceil(d) : _error();
 };
