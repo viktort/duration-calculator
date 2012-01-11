@@ -2,7 +2,7 @@
   "author": "Viktor Trako <viktor.trako@imagisys.co.uk>",
   "name": "duration-calculator",
   "description": "A module for calculating the duration between two given dates, irrespective of the order.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "url": "git@github.com:viktort/duration-calculator.git"
   },
