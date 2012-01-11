@@ -49,13 +49,44 @@ test('calculator', {
   },
 
   'Check datetimes crossing a DST boundary one way are supported': function() {
-    // 25th march 2012 -> 1hr
-    assert.equal(calculator.calculate('2012-03-24 12:00', '2012-03-26 13:00'), 2);
-  },
+    // we don't know when DST will be on the syste locale, try to guess
+    var d = new Date(2012, 0, 1);
+    d.setHours(12);
+    var offset = d.getTimezoneOffset();
+    var dstCrossovers = [];
+    while(d.getFullYear() == 2012) {
+      d.add({days:1});
+      if(d.getTimezoneOffset() != offset) {
+        offset = d.getTimezoneOffset();
+        dstCrossovers.push({
+          offset: offset,
+          date: d.toUTCString()
+        });
+      }
+    }
+    if(dstCrossovers.length) {
+      var lastOffset = 0;
+      dstCrossovers.forEach(function(crossover) {
+        var hourOffset = crossover.offset/60;
+        crossover.hourOffset = lastOffset - hourOffset;
+        lastOffset = hourOffset;
 
-  'Check datetimes crossing a DST boundary the other way are supported': function() {
-    // 26th october 2012 <- 1hr
-    assert.equal(calculator.calculate('2012-10-27 13:00', '2012-10-29 12:00'), 2);
+        var before = new Date(crossover.date).add({days: -1});
+        before.setHours(12);
+
+        var after = new Date(crossover.date).add({days: 1});
+        after.setHours(12 + crossover.hourOffset);
+
+        assert.equal(
+            calculator.calculate(
+                before.toString('yyyy-MM-dd HH:mm'), 
+                after.toString('yyyy-MM-dd HH:mm')
+            ), 2
+        );
+      });
+    } else {
+      // nothing to test locale doesn't have DST
+    }
   },
 
   'Check date object support': function() {
