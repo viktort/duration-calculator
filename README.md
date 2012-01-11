@@ -30,6 +30,6 @@ console.log('Duration = ' + duration);
 ```
 
 ##Additional
-Duration calculator workf with Day Light Saving hours too. Tests are in place in test.js. 
+Duration calculator works with Day Light Saving hours too. Tests are in place in test.js. 
 Thanks to [Ollie Buck](https://github.com/shackpank) for contributing. Current version in now
 available from npm.
